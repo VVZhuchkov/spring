@@ -1,4 +1,4 @@
-package com.github.vvzhuchkov.spring.xml.profiling;
+package com.github.vvzhuchkov.spring.xml.timing;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
@@ -12,20 +12,20 @@ import java.lang.reflect.Proxy;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ProfilingBeanPostProcessor implements BeanPostProcessor {
+public class TimingBeanPostProcessor implements BeanPostProcessor {
 
     private Map<String, Class> map = new HashMap<>();
-    private ProfilingController controller = new ProfilingController();
+    private TimingController controller = new TimingController();
 
-    public ProfilingBeanPostProcessor() throws Exception {
+    public TimingBeanPostProcessor() throws Exception {
         MBeanServer platformMBeanServer = ManagementFactory.getPlatformMBeanServer();
-        platformMBeanServer.registerMBean(controller, new ObjectName("profiling", "name", "controller"));
+        platformMBeanServer.registerMBean(controller, new ObjectName("timing", "name", "controller"));
     }
 
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
         Class<?> beanClass = bean.getClass();
-        if(beanClass.isAnnotationPresent(Profiling.class)){
+        if(beanClass.isAnnotationPresent(Timing.class)){
             map.put(beanName, beanClass);
         }
         return bean;
@@ -39,12 +39,12 @@ public class ProfilingBeanPostProcessor implements BeanPostProcessor {
                 @Override
                 public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
                     if (controller.isEnabled()){
-                        System.out.println("Started profiling");
+                        System.out.println("Started timing");
                         long timeBefore = System.nanoTime();
                         Object retVal = method.invoke(bean, args);
                         long timeAfter = System.nanoTime();
                         long timeAll = timeAfter-timeBefore;
-                        System.out.println("Finished profiling in time: " +  timeAll);
+                        System.out.println("Finished timing in time: " +  timeAll);
                         return retVal;
                     } else {
                         return method.invoke(bean, args);

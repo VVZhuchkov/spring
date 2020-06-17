@@ -1,8 +1,8 @@
-package com.github.vvzhuchkov.spring.xml.profiling;
+package com.github.vvzhuchkov.spring.xml.timing;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Profiling {
+public @interface Timing {
 }

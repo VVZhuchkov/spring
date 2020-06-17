@@ -1,10 +1,10 @@
 package com.github.vvzhuchkov.spring.xml.model;
 
-import com.github.vvzhuchkov.spring.xml.profiling.Profiling;
+import com.github.vvzhuchkov.spring.xml.timing.Timing;
 
 import java.util.logging.Logger;
 
-@Profiling
+@Timing
 public class Car implements CarBrandModel {
     private static Logger log = Logger.getLogger(String.valueOf(Car.class));
 

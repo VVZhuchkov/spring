@@ -10,7 +10,7 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class xmlConfigTest {
+class XmlConfigTest {
 
     ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 

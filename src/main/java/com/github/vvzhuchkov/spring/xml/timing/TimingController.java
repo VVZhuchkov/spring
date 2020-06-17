@@ -1,6 +1,6 @@
-package com.github.vvzhuchkov.spring.xml.profiling;
+package com.github.vvzhuchkov.spring.xml.timing;
 
-public class ProfilingController implements ProfilingControllerMBean {
+public class TimingController implements TimingControllerMBean {
     private boolean enabled = true;
 
     public boolean isEnabled() {

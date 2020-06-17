@@ -11,7 +11,7 @@ import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class javaConfigTest {
+class JavaConfigTest {
     @Test
     void getBeanTest(){
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();

@@ -9,7 +9,7 @@
 
    <context:annotation-config/>
 
-    <bean class="com.github.vvzhuchkov.spring.xml.profiling.ProfilingBeanPostProcessor"/>
+    <bean class="com.github.vvzhuchkov.spring.xml.timing.TimingBeanPostProcessor"/>
 
     <bean id = "car" class="com.github.vvzhuchkov.spring.xml.model.Car" scope="singleton">
         <constructor-arg index="0" value="1"/>
